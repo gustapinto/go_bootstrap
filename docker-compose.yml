@@ -1,0 +1,8 @@
+version: "3.6"
+
+services:
+  go:
+    image: golang:1.19-alpine
+    tty: true
+    volumes:
+      - ./:/go_bootstrap:Z
