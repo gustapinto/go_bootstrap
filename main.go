@@ -17,7 +17,7 @@ var VALID_TEMPLATES = []string{
 }
 
 func main() {
-	projectName := flag.String("project", "./", "The project folder name")
+	projectName := flag.String("project", "", "The project folder name")
 	template := flag.String("template", "basic", "The template to use")
 	flag.Parse()
 
@@ -43,7 +43,9 @@ func main() {
 		log.Fatalf("%+v\n", err)
 	}
 
-	if err := os.Rename(*template, *projectName); err != nil {
-		log.Fatalf("%+v\n", err)
+	if *projectName != "" {
+		if err := os.Rename(*template, *projectName); err != nil {
+			log.Fatalf("%+v\n", err)
+		}
 	}
 }
